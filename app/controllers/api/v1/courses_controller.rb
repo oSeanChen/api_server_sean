@@ -3,18 +3,42 @@
 module Api
   module V1
     class CoursesController < ApplicationController
-      before_action :find_couse, only: %w[show create destroy]
+      before_action :find_course, only: %w[show create destroy]
       def index
         @courses = Course.all
+        render json:@courses, status: 200
       end
-
-      def show; end
 
       def create
         @course = Course.new(course_params)
+        if @couse.save
+          render json: @course, status: 200
+        else
+          rnder json: {error: "課程建立失敗"}
+        end
+
+      end
+      
+      def show
+        begin @course
+          render json: @course, status: 200
+        rescue
+          render json: {error: "找不到課程"}
+        end
       end
 
-      def destroy; end
+      def update
+        if @course.update(course_params)
+          render json: @course, status: 200
+        else
+          render json: {error: "課程更新失敗"}
+        end
+      end
+
+
+      def destroy
+        @course.destroy
+      end
 
       private
 
