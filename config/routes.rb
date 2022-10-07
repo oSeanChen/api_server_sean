@@ -3,8 +3,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :courses do
-        resources :chapters
+      resources :courses
       end
     end
   end
