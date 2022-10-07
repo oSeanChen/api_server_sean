@@ -193,7 +193,6 @@ DEPENDENCIES
   rubocop (~> 1.36)
   spring
   sqlite3 (~> 1.4)
-  tzinfo-data
 
 RUBY VERSION
    ruby 2.7.5p203
