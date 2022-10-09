@@ -1,0 +1,15 @@
+AllCops:
+  Exclude:
+    - "bin/*"
+    - "config/**/*"
+    - "db/**/*"
+    - "node_modules/**/*"
+    - "spec/**/*"
+    - "test/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+Style/SymbolArray:
+  Exclude:
+    - "Gemfile"

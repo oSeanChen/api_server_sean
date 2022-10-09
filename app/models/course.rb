@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class Course < ApplicationRecord
+  # after_create :create_chapter
   validates :title, presence: true
   validates :lecturer, presence: true
-  # after_create :method
+
+  has_many :chapters, -> { order(position: :asc) }
 
   private
-  def 建立後建立章節
-  end
+
+  def create_chapter; end
 end

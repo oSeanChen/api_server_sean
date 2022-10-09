@@ -6,7 +6,7 @@ module Api
       before_action :find_course, only: %w[show update destroy]
       def index
         @courses = Course.all
-        render json:@courses, status: 200
+        render json: @courses, status: 200
       end
 
       def create
@@ -14,27 +14,23 @@ module Api
         if @course.save
           render json: @course, status: 200
         else
-          render json: {error: "課程建立失敗"}
+          render json: { error: '課程建立失敗' }
         end
-
       end
-      
+
       def show
-        begin @course
-          render json: @course, status: 200
-        rescue
-          render json: {error: "找不到課程"}
-        end
+        render json: @course, status: 200
+      rescue StandardError
+        render json: { error: '找不到課程' }
       end
 
       def update
         if @course.update(course_params)
           render json: @course, status: 200
         else
-          render json: {error: "課程更新失敗"}
+          render json: { error: '課程更新失敗' }
         end
       end
-
 
       def destroy
         @course.destroy
