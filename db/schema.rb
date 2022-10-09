@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_07_171423) do
+ActiveRecord::Schema.define(version: 2022_10_09_080849) do
 
   create_table "chapters", force: :cascade do |t|
     t.string "title"
-    t.integer "order"
     t.integer "course_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -33,7 +32,6 @@ ActiveRecord::Schema.define(version: 2022_10_07_171423) do
     t.string "title"
     t.text "description"
     t.text "content"
-    t.integer "order"
     t.integer "chapter_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

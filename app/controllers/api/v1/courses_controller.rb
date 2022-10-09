@@ -3,7 +3,7 @@
 module Api
   module V1
     class CoursesController < ApplicationController
-      before_action :find_course, only: %w[show create destroy]
+      before_action :find_course, only: %w[show update destroy]
       def index
         @courses = Course.all
         render json:@courses, status: 200
@@ -11,10 +11,10 @@ module Api
 
       def create
         @course = Course.new(course_params)
-        if @couse.save
+        if @course.save
           render json: @course, status: 200
         else
-          rnder json: {error: "課程建立失敗"}
+          render json: {error: "課程建立失敗"}
         end
 
       end
