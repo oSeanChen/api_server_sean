@@ -5,11 +5,17 @@ class Api::V1::ChaptersController < ApplicationController
   end
 
   def create
+    @chapter = Chapter.new(params_chapter)
   end
 
   def update
   end
 
   def destroy
+  end
+
+  private
+  def params_chapter
+    params.require(:chapter).permit(:title)
   end
 end
