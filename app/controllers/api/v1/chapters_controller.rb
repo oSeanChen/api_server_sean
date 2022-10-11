@@ -15,21 +15,21 @@ module Api
         if @chapter.save
           render json: @chapter, status: 200
         else
-          render json: { error: '章節建立失敗' }
+          render json: { error: '章節建立失敗' }, status: 404
         end
       end
 
       def show
         render json: @chapter, status: 200
       rescue StandardError
-        render json: { error: '找不到章節' }
+        render json: { error: '找不到章節' }, status: 404
       end
 
       def update
         if @chapter.update(chapter_params)
           render json: @chapter, status: 200
         else
-          render json: { error: '章節更新失敗' }
+          render json: { error: '章節更新失敗' }, status: 404
         end
       end
 
