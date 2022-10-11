@@ -7,15 +7,23 @@
 
 `bundle`
 
+[專案 heroku 連結](https://api-server-sean.herokuapp.com)
+
 ## 專案的架構
 
-建構一個教學平台的 api server，預計讓使用者建立相關課程、章節、單元以及內部的內容敘述，可透過這個介面可以讓不同平台進行資料的ＣＲＵＤ 建立、讀取、修改、刪除等操作。
+建構一個教學平台的 api server，預計讓使用者建立相關課程、章節、單元以及內部的內容敘述，可透過這個介面可以讓不同平台進行資料的建立、讀取、修改、刪除等操作。
 
 會建立三種 model 可以記錄相關的資料與關聯
 
 - Course 課程
+  - title, lecturer, description
+    /api/v1/courses
 - Chapter 章節
+  - title, course_id, position
+    /api/v1/courses/:id/chapters
 - Unit 單元
+  - title, description, content, chapter_id, position
+    /api/v1/courses/:id/chapters/:id/units
 
 ## 使用到的第三方 Gem
 
@@ -43,20 +51,29 @@
 ## 註解的原則
 
 1. 進行複雜的邏輯運算中，可能出現一些特殊的常數或是運算的目的需要簡單標記就會使用。
-2.
+2. 特殊的套件用法會註記
 
 ## 遇到的困難以及解決的方法
 
-#### api 寫法
+#### api 開發
 
-1. 因為沒有寫過純粹 api server，對比過去開發都是包含前端畫面一起的做法，不確定寫法上應該怎麼樣去調整。
+因為沒有寫過純粹 api server，對比過去開發都是包含前端畫面一起的做法，不確定寫法上應該怎麼樣去調整。
 
-- 找到 rails 中有純粹撰寫 api 的 api-only 模式，並且參考[鐵人賽技術文章](https://ithelp.ithome.com.tw/articles/10268890)及 [為你自己學 ruby on rails](https://railsbook.tw/chapters/22-api-mode)等資料，對於基本的 postman 使用來測試 api、
+-> 找到 rails 中有純粹撰寫 api 的 api-only 模式，並且參考[鐵人賽技術文章](https://ithelp.ithome.com.tw/articles/10268890)及 [為你自己學 ruby on rails](https://railsbook.tw/chapters/22-api-mode)等資料，對於基本的 postman 使用來測試 api、
 
 #### rspec 基本單元測試
 
-1. 不熟悉 rspec 測試套件使用及相關測試方法
+不熟悉 rspec 測試套件使用及相關測試方法
 
-- 透過 rspec 特快車教學影片及參考相關技術文件
+-> 透過 rspec 特快車教學影片及參考相關技術文件，對於測試套件及寫法有基礎的認識。
 
-#### heroku 部署
+## 仍未解決的困難
+
+1. 把課程內相關的章節及單元一同顯示在同一個 api 路徑
+2. 同步建立 course, chapter, unit
+   目前想到可能的做法
+
+   - 把資料的新增修改刪除都放到同一個 controller 裡面去處理。
+   - 把目前的 3 個 各自的 controller 都針資料修改去進行判斷
+
+3. 利用測試來驅動開發，把每個使用到的 controller 及 model 部分先寫好測試再進行功能的開發

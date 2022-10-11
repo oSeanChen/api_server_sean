@@ -21,14 +21,14 @@ module Api
       def show
         render json: @course, status: 200
       rescue StandardError
-        render json: { error: '找不到課程' }
+        render json: { error: '找不到課程' }, status: 404
       end
 
       def update
         if @course.update(course_params)
           render json: @course, status: 200
         else
-          render json: { error: '課程更新失敗' }
+          render json: { error: '課程更新失敗' }, status: 404
         end
       end
 

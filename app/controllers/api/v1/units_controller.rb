@@ -40,7 +40,7 @@ module Api
       private
 
       def params_unit
-        params.require(:unit).permit(:title, :description, :content, :position).merge(course_id: unit.course.id)
+        params.require(:unit).permit(:title, :description, :content, :position).merge(chapter_id: unit.chapter.id)
       end
 
       def find_unit
