@@ -1,5 +1,9 @@
-class Api::V1::UnitsController < ApplicationController
-   before_action :find_unit, only: %w[show update destroy]
+# frozen_string_literal: true
+
+module Api
+  module V1
+    class UnitsController < ApplicationController
+      before_action :find_unit, only: %w[show update destroy]
 
       def index
         @units = Unit.all
@@ -44,7 +48,4 @@ class Api::V1::UnitsController < ApplicationController
       end
     end
   end
-end
-
-
 end

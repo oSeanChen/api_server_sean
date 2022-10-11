@@ -14,7 +14,7 @@ module Api
         if @course.save
           render json: @course, status: 200
         else
-          render json: { error: '課程建立失敗' },status: 404
+          render json: { error: '課程建立失敗' }, status: 404
         end
       end
 

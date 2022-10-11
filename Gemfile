@@ -32,10 +32,10 @@ gem 'pg'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
-  gem 'rubocop', '~> 1.36'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
+  gem 'rubocop', '~> 1.36'
 end
 
 group :development do
