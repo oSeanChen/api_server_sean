@@ -11,7 +11,7 @@ module Api
       end
 
       def create
-        @chapter = Chapter.new(params_chapter)
+        @chapter = Chapter.new(chapter_params)
         if @chapter.save
           render json: @chapter, status: 200
         else
@@ -39,7 +39,7 @@ module Api
 
       private
 
-      def params_chapter
+      def chapter_params
         params.require(:chapter).permit(:title, :position).merge(course_id: Chapter.course.id)
       end
 

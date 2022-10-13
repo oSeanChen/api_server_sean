@@ -11,7 +11,7 @@ module Api
       end
 
       def create
-        @unit = Unit.new(params_unit)
+        @unit = Unit.new(unit_params)
         if @unit.save
           render json: @unit, status: 200
         else
@@ -39,7 +39,7 @@ module Api
 
       private
 
-      def params_unit
+      def unit_params
         params.require(:unit).permit(:title, :description, :content, :position).merge(chapter_id: unit.chapter.id)
       end
 
